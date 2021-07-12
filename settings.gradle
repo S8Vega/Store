@@ -1,0 +1,3 @@
+rootProject.name = 'practica-backend-java-microservicios'
+include 'servicio-cliente'
+include 'servicio-foto'

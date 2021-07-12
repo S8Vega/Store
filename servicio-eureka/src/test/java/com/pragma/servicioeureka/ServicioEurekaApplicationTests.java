@@ -1,10 +1,10 @@
-package com.pragma.serviciocliente;
+package com.pragma.servicioeureka;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class PracticaBackendJavaApplicationTests {
+class ServicioEurekaApplicationTests {
 
     @Test
     void contextLoads() {

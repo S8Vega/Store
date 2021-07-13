@@ -27,4 +27,13 @@ public class ManejadorErrores extends ResponseEntityExceptionHandler {
                 .build();
         return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
     }
+
+    @ExceptionHandler(Exception.class)
+    public final ResponseEntity<Error> exception(Exception exception) {
+        Error error = Error.builder()
+                .nombre(exception.getClass().getSimpleName())
+                .mensaje(exception.getMessage())
+                .build();
+        return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 }

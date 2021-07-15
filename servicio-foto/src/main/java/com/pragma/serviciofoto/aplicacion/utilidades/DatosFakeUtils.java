@@ -2,6 +2,7 @@ package com.pragma.serviciofoto.aplicacion.utilidades;
 
 import com.github.javafaker.Faker;
 import com.pragma.serviciofoto.dominio.Foto;
+import com.pragma.serviciofoto.infraestructura.persistencia.entidad.FotoEntidad;
 import org.springframework.stereotype.Component;
 
 import java.util.Locale;
@@ -22,6 +23,27 @@ public class DatosFakeUtils {
         return Foto.builder()
                 .clienteId(faker.number().numberBetween(1L, 10000000000000000L))
                 .foto(faker.app().name())
+                .build();
+    }
+
+    public static FotoEntidad getFotoEntidad() {
+        return FotoEntidad.builder()
+                .clienteId(faker.number().numberBetween(1L, 10000000000000000L))
+                .foto(faker.app().name())
+                .build();
+    }
+
+    public static FotoEntidad getFotoEntidad(long clienteId) {
+        return FotoEntidad.builder()
+                .clienteId(clienteId)
+                .foto(faker.app().name())
+                .build();
+    }
+
+    public static FotoEntidad getFotoEntidad(long clienteId, String foto) {
+        return FotoEntidad.builder()
+                .clienteId(clienteId)
+                .foto(foto)
                 .build();
     }
 }

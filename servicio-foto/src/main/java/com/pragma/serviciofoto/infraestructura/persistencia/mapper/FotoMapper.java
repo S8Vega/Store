@@ -1,17 +1,16 @@
 package com.pragma.serviciofoto.infraestructura.persistencia.mapper;
 
 import com.pragma.serviciofoto.dominio.Foto;
-import com.pragma.serviciofoto.infraestructura.persistencia.dao.FotoDaoInterfaz;
 import com.pragma.serviciofoto.infraestructura.persistencia.entidad.FotoEntidad;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.pragma.serviciofoto.infraestructura.persistencia.repositorio.FotoRepositorioImpl;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
 @Component
 public class FotoMapper {
-    @Autowired
-    private FotoDaoInterfaz fotoRepositorio;
+
+    private FotoRepositorioImpl fotoRepositorio;
 
     public Foto entidadADominio(FotoEntidad fotoEntidad) {
         return Foto.builder()
@@ -21,7 +20,7 @@ public class FotoMapper {
     }
 
     public FotoEntidad dominioAEntidad(Foto foto) {
-        Optional<FotoEntidad> fotoEntidadOptional = fotoRepositorio.findByClienteId(foto.getClienteId());
+        Optional<FotoEntidad> fotoEntidadOptional = fotoRepositorio.buscarPorClienteId(foto.getClienteId());
         if (fotoEntidadOptional.isEmpty()) {
             fotoEntidadOptional = Optional.of(FotoEntidad.builder().build());
         }

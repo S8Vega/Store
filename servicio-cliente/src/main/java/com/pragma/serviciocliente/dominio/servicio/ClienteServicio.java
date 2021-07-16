@@ -36,7 +36,7 @@ public class ClienteServicio {
     @Autowired
     private FotoRest fotoRest;
 
-    public Cliente obtenetPorIdentificacion(String tipoIdentificacion, String numeroIdentificacion) throws Exception {
+    public Cliente obtenerPorIdentificacion(String tipoIdentificacion, String numeroIdentificacion) throws Exception {
         IdentificacionEntidad identificacionEntidad = identificacionServicio.obtenerPorTipoYNumero(
                 tipoIdentificacion,
                 numeroIdentificacion

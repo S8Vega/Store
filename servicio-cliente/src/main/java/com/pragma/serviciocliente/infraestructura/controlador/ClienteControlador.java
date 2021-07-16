@@ -32,7 +32,7 @@ public class ClienteControlador {
             @ApiParam(value = "numero de identificacion", required = true, example = "1")
                     String numero
     ) throws Exception {
-        Cliente cliente = clienteServicio.obtenetPorIdentificacion(tipo, numero);
+        Cliente cliente = clienteServicio.obtenerPorIdentificacion(tipo, numero);
         return new ResponseEntity<>(cliente, HttpStatus.OK);
     }
 

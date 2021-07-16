@@ -28,6 +28,18 @@ public class DatosFakeUtils {
                 .build();
     }
 
+    public static Cliente getCliente(ClienteEntidad clienteEntidad, Foto foto) {
+        return Cliente.builder()
+                .nombres(clienteEntidad.getNombres())
+                .apellidos(clienteEntidad.getApellidos())
+                .tipoIdentificacion(TipoIdentifiacion.valueOf(clienteEntidad.getIdentificacionEntidad().getTipo()))
+                .numeroIdentificacion(clienteEntidad.getIdentificacionEntidad().getNumero())
+                .edad(clienteEntidad.getEdad())
+                .ciudadNacimiento(clienteEntidad.getCiudadDeNacimiento().getNombre())
+                .foto(foto.getFoto())
+                .build();
+    }
+
     public static Foto getFoto(long clienteId) {
         return Foto.builder()
                 .clienteId(clienteId)

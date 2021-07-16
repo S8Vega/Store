@@ -10,20 +10,22 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class FotoServicioTest {
+class FotoServicioTestUnitario {
 
     @Mock
     FotoRepositorioInterfaz fotoRepositorio;
-    @Mock
+    @Spy
     FotoMapper mapper;
     @InjectMocks
     FotoServicio fotoServicio;
@@ -35,18 +37,17 @@ class FotoServicioTest {
         when(
                 fotoRepositorio.buscarPorClienteId(foto.getClienteId())
         ).thenReturn(Optional.of(fotoEntidad));
-        when(
-                mapper.entidadADominio(fotoEntidad)
-        ).thenReturn(foto);
         assertEquals(foto, fotoServicio.buscarPorClienteId(foto.getClienteId()));
+        verify(fotoRepositorio).buscarPorClienteId(foto.getClienteId());
     }
 
     @Test
-    void buscarPorClienteId_exception() {
+    void buscarPorClienteId_NotFoundException() {
         Foto foto = DatosFakeUtils.getFoto();
         when(
                 fotoRepositorio.buscarPorClienteId(foto.getClienteId())
         ).thenReturn(Optional.empty());
         assertThrows(NotFoundException.class, () -> fotoServicio.buscarPorClienteId(foto.getClienteId()));
+        verify(fotoRepositorio).buscarPorClienteId(foto.getClienteId());
     }
 }

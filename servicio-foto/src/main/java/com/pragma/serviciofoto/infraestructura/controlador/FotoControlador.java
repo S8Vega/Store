@@ -2,6 +2,7 @@ package com.pragma.serviciofoto.infraestructura.controlador;
 
 import com.pragma.serviciofoto.dominio.Foto;
 import com.pragma.serviciofoto.dominio.servicio.FotoServicio;
+import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +18,7 @@ public class FotoControlador {
     private FotoServicio fotoServicio;
 
     @GetMapping("/{clienteId}")
-    public ResponseEntity<Foto> obtenerPorClienteId(@PathVariable Long clienteId) throws Exception {
+    public ResponseEntity<Foto> obtenerPorClienteId(@PathVariable Long clienteId) throws NotFoundException {
         return new ResponseEntity<>(fotoServicio.buscarPorClienteId(clienteId), HttpStatus.OK);
     }
 

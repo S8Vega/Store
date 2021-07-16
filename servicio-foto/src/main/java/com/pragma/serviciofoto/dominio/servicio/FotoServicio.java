@@ -24,7 +24,7 @@ public class FotoServicio {
     @Autowired
     private FotoMapper fotoMapper;
 
-    public Foto buscarPorClienteId(Long clienteId) throws Exception {
+    public Foto buscarPorClienteId(Long clienteId) throws NotFoundException {
         Optional<FotoEntidad> fotoEntidad = fotoRepositorio.buscarPorClienteId(clienteId);
         if (fotoEntidad.isEmpty()) {
             throw new NotFoundException(ErrorUtils.clienteSinFoto(clienteId));

@@ -1,4 +1,4 @@
-rootProject.name = 'practica-backend-java-microservicios'
+rootProject.name = 'Store'
 include 'servicio-cliente'
 include 'servicio-foto'
 include 'servicio-eureka'

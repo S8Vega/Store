@@ -1,4 +1,4 @@
-package com.practice.fileservice.infraestructura.error;
+package com.practice.fileservice.error;
 
 import javassist.NotFoundException;
 import org.springframework.http.HttpStatus;
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 @RestControllerAdvice
-public class ManejadorErrores extends ResponseEntityExceptionHandler {
+public class ErrorHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(IllegalArgumentException.class)
     public final ResponseEntity<Error> illegalArgumentException(Exception exception) {

@@ -1,4 +1,4 @@
-package com.practice.fileservice.infraestructura.error;
+package com.practice.fileservice.error;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -19,13 +19,13 @@ public class FileRepositoryImpl implements FileRepositoryInterface {
     private static final Logger LOGGER = LogManager.getLogger(FileRepositoryImpl.class);
 
     @Autowired
-    private FileDaoInterface fotoDao;
+    private FileDaoInterface fileDao;
     @Autowired
     private FileMapper fileMapper;
 
     @Override
     public File findById(String id) throws NotFoundException {
-        Optional<FileEntity> fileEntity = fotoDao.findById(id);
+        Optional<FileEntity> fileEntity = fileDao.findById(id);
         if (fileEntity.isEmpty()) {
             LOGGER.error(ErrorUtils.nonExistentFile(id));
             throw new NotFoundException(ErrorUtils.nonExistentFile(id));
@@ -36,11 +36,11 @@ public class FileRepositoryImpl implements FileRepositoryInterface {
     @Override
     public File save(File file) {
         FileEntity fileEntity = fileMapper.modelToEntity(file);
-        return fileMapper.entityToModel(fotoDao.save(fileEntity));
+        return fileMapper.entityToModel(fileDao.save(fileEntity));
     }
 
     @Override
     public void delete(String id) {
-        fotoDao.deleteById(id);
+        fileDao.deleteById(id);
     }
 }

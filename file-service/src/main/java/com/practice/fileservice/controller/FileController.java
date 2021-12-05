@@ -1,4 +1,4 @@
-package com.practice.fileservice.controlador;
+package com.practice.fileservice.controller;
 
 import com.practice.fileservice.model.File;
 import com.practice.fileservice.service.FileService;

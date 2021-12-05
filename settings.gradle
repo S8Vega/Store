@@ -1,7 +1,14 @@
 rootProject.name = 'Store'
-include 'customer-service'
+
 include 'file-service'
 
+include ':customer-service'
+project(':customer-service').projectDir = file('./customer-service')
+
 include 'eureka'
-include 'gateway'
-include 'servicio-documentacion'
+
+include ':gateway'
+project(':gateway').projectDir = file('./gateway')
+include ':servicio-documentacion'
+project(':servicio-documentacion').projectDir = file('./servicio-documentacion')
+

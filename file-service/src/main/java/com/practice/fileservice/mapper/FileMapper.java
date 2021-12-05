@@ -2,15 +2,10 @@ package com.practice.fileservice.mapper;
 
 import com.practice.fileservice.entity.FileEntity;
 import com.practice.fileservice.model.File;
-import com.practice.fileservice.repository.FileRepositoryImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class FileMapper {
-
-    @Autowired
-    private FileRepositoryImpl fileRepository;
 
     public File entityToModel(FileEntity fileEntity) {
         return File.builder()

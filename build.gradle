@@ -1,9 +1,22 @@
-apply plugin: 'java'
-apply plugin: 'idea'
-
-repositories {
-    jcenter()
+plugins {
+    id 'application'
 }
 
+group 'com.practica'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = '11'
+targetCompatibility = '11'
+
+repositories {
+    mavenCentral()
+}
+
+
 dependencies {
+
+}
+
+test {
+    useJUnitPlatform()
 }

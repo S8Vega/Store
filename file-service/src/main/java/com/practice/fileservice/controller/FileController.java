@@ -2,7 +2,6 @@ package com.practice.fileservice.controller;
 
 import com.practice.fileservice.model.File;
 import com.practice.fileservice.service.FileService;
-import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +18,7 @@ public class FileController {
     private FileService fileService;
 
     @GetMapping("/{id}")
-    public ResponseEntity<File> findById(@PathVariable String id) throws NotFoundException {
+    public ResponseEntity<File> findById(@PathVariable String id) throws ClassNotFoundException {
         return ResponseEntity.ok(fileService.findById(id));
     }
 

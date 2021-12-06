@@ -5,7 +5,6 @@ import com.practice.fileservice.entity.FileEntity;
 import com.practice.fileservice.error.ErrorUtils;
 import com.practice.fileservice.mapper.FileMapper;
 import com.practice.fileservice.model.File;
-import javassist.NotFoundException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,11 +23,11 @@ public class FileRepositoryImpl implements FileRepositoryInterface {
     private FileMapper fileMapper;
 
     @Override
-    public File findById(String id) throws NotFoundException {
+    public File findById(String id) throws ClassNotFoundException {
         Optional<FileEntity> fileEntity = fileDao.findById(id);
-        if (fileEntity.isEmpty()) {
+        if (!fileEntity.isPresent()) {
             LOGGER.error(ErrorUtils.nonExistentFile(id));
-            throw new NotFoundException(ErrorUtils.nonExistentFile(id));
+            throw new ClassNotFoundException(ErrorUtils.nonExistentFile(id));
         }
         return fileMapper.entityToModel(fileEntity.get());
     }

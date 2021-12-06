@@ -6,8 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
-
-import javax.persistence.Id;
+import org.springframework.data.mongodb.core.mapping.MongoId;
 
 @Data
 @AllArgsConstructor
@@ -15,7 +14,7 @@ import javax.persistence.Id;
 @Builder
 @Document(collection = "file")
 public class FileEntity {
-    @Id
+    @MongoId
     private String id;
     @Field
     private String base64;

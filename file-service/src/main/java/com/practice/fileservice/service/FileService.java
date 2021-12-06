@@ -2,7 +2,6 @@ package com.practice.fileservice.service;
 
 import com.practice.fileservice.model.File;
 import com.practice.fileservice.repository.FileRepositoryInterface;
-import javassist.NotFoundException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +18,7 @@ public class FileService {
     @Autowired
     private FileRepositoryInterface fileRepository;
 
-    public File findById(String id) throws NotFoundException {
+    public File findById(String id) throws ClassNotFoundException {
         return fileRepository.findById(id);
     }
 

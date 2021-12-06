@@ -1,6 +1,5 @@
 package com.practice.fileservice.error;
 
-import javassist.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -19,7 +18,7 @@ public class ErrorHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler(NotFoundException.class)
+    @ExceptionHandler(ClassNotFoundException.class)
     public final ResponseEntity<Error> notFoundException(Exception exception) {
         Error error = Error.builder()
                 .nombre(exception.getClass().getSimpleName())

@@ -25,7 +25,7 @@ public class FileRepositoryImpl implements FileRepositoryInterface {
     @Override
     public File findById(String id) throws ClassNotFoundException {
         Optional<FileEntity> fileEntity = fileDao.findById(id);
-        if (!fileEntity.isPresent()) {
+        if (fileEntity.isEmpty()) {
             LOGGER.error(ErrorUtils.nonExistentFile(id));
             throw new ClassNotFoundException(ErrorUtils.nonExistentFile(id));
         }

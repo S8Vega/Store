@@ -2,11 +2,11 @@ plugins {
     id 'application'
 }
 
-group 'com.practica'
+group 'com.practice'
 version '1.0-SNAPSHOT'
 
-sourceCompatibility = '1.8'
-targetCompatibility = '1.8'
+sourceCompatibility = '11'
+targetCompatibility = '11'
 
 repositories {
     mavenCentral()

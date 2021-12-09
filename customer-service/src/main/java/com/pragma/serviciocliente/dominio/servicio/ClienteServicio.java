@@ -47,7 +47,7 @@ public class ClienteServicio {
 
     public List<Cliente> obtenerPorEdadMayorIgual(Integer edad) throws Exception {
         Optional<List<ClienteEntidad>> clientesEntidad = clienteRepositorio.obtenerPorEdadMayorIgual(edad);
-        if (clientesEntidad.isEmpty()) {
+        if (!clientesEntidad.isPresent()) {
             throw new NotFoundException(ErrorUtils.sinClientesPorEdad(edad));
         }
         return getClientes(clientesEntidad.get());

@@ -1,4 +1,4 @@
-rootProject.name = 'Store'
+rootProject.name = 'store-api'
 
 include 'file-service'
 

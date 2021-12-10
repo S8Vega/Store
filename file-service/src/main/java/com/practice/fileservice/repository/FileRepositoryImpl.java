@@ -5,8 +5,6 @@ import com.practice.fileservice.entity.FileEntity;
 import com.practice.fileservice.error.ErrorUtils;
 import com.practice.fileservice.mapper.FileMapper;
 import com.practice.fileservice.model.File;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -14,8 +12,6 @@ import java.util.Optional;
 
 @Repository
 public class FileRepositoryImpl implements FileRepositoryInterface {
-
-    private static final Logger LOGGER = LogManager.getLogger(FileRepositoryImpl.class);
 
     @Autowired
     private FileDaoInterface fileDao;
@@ -26,7 +22,6 @@ public class FileRepositoryImpl implements FileRepositoryInterface {
     public File findById(String id) throws ClassNotFoundException {
         Optional<FileEntity> fileEntity = fileDao.findById(id);
         if (fileEntity.isEmpty()) {
-            LOGGER.error(ErrorUtils.nonExistentFile(id));
             throw new ClassNotFoundException(ErrorUtils.nonExistentFile(id));
         }
         return fileMapper.entityToModel(fileEntity.get());

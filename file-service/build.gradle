@@ -30,6 +30,7 @@ dependencies {
     // test
     implementation 'com.github.javafaker:javafaker:1.0.2'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.mockito:mockito-core:3.11.2'
     // cloud
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
     // mapstruct and lombok

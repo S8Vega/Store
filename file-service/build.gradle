@@ -26,11 +26,11 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     // persistence
-    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb:2.5.1'
+    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb:2.6.4'
     // test
     implementation 'com.github.javafaker:javafaker:1.0.2'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    implementation 'org.mockito:mockito-core:3.11.2'
+    implementation 'org.mockito:mockito-core:4.3.1'
     // cloud
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
     // mapstruct and lombok
@@ -40,8 +40,8 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
     // swagger
-    implementation 'io.springfox:springfox-swagger2:2.9.2'
-    implementation 'io.springfox:springfox-swagger-ui:2.9.2'
+    implementation 'io.springfox:springfox-swagger2:3.0.0'
+    implementation 'io.springfox:springfox-swagger-ui:3.0.0'
 }
 
 dependencyManagement {

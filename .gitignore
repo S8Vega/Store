@@ -46,3 +46,5 @@ out/
 
 ### VS Code ###
 .vscode/
+/file-service/src/main/java/META-INF/MANIFEST.MF
+/customer-service/src/main/generated/com/pragma/serviciocliente/infraestructura/persistencia/mapper/ClienteMapperInterfaceImpl.java

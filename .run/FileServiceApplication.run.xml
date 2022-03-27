@@ -7,7 +7,7 @@
     <module name="store-api.file-service.main" />
     <extension name="coverage">
       <pattern>
-        <option name="PATTERN" value="com.practice.fileservice.*" />
+        <option name="PATTERN" value="com.practice.fileservice.rest.*" />
         <option name="ENABLED" value="true" />
       </pattern>
     </extension>

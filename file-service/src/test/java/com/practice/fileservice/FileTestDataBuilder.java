@@ -1,5 +1,6 @@
 package com.practice.fileservice;
 
+import com.practice.fileservice.entity.FileEntity;
 import com.practice.fileservice.model.File;
 
 public class FileTestDataBuilder {
@@ -11,6 +12,15 @@ public class FileTestDataBuilder {
 
     public static File fileBuilder() {
         return File.builder()
+                .id(ID)
+                .base64(BASE64)
+                .fileName(FILE_NAME)
+                .fileType(FILE_TYPE)
+                .build();
+    }
+
+    public static FileEntity fileEntityBuilder() {
+        return FileEntity.builder()
                 .id(ID)
                 .base64(BASE64)
                 .fileName(FILE_NAME)

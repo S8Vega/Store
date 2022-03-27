@@ -2,6 +2,7 @@ package com.practice.fileservice.repository;
 
 import com.practice.fileservice.FileTestDataBuilder;
 import com.practice.fileservice.dao.FileDaoInterface;
+import com.practice.fileservice.error.ErrorUtils;
 import com.practice.fileservice.mapper.FileMapper;
 import com.practice.fileservice.model.File;
 import org.junit.jupiter.api.Test;
@@ -50,7 +51,10 @@ class FileRepositoryImplTest {
 		when(fileDao.findById(fileExpected.getId()))
 				.thenReturn(Optional.empty());
 
-		assertThrows(ClassNotFoundException.class, () -> fileRepository.findById(fileExpected.getId()));
+		ClassNotFoundException exception = assertThrows(ClassNotFoundException.class,
+				() -> fileRepository.findById(fileExpected.getId()));
+
+		assertEquals(ErrorUtils.nonExistentFile(fileExpected.getId()), exception.getMessage());
 		verify(fileDao).findById(fileExpected.getId());
 	}
 

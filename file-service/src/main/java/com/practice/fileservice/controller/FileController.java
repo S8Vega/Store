@@ -14,28 +14,28 @@ import java.util.List;
 @RequestMapping("/file")
 public class FileController {
 
-    @Autowired
-    private FileService fileService;
+	@Autowired
+	private FileService fileService;
 
-    @GetMapping("/{id}")
-    public ResponseEntity<File> findById(@PathVariable String id) throws ClassNotFoundException {
-        return ResponseEntity.ok(fileService.findById(id));
-    }
+	@GetMapping("/{id}")
+	public ResponseEntity<File> findById(@PathVariable String id) throws ClassNotFoundException {
+		return ResponseEntity.ok(fileService.findById(id));
+	}
 
-    @PostMapping
-    public ResponseEntity<File> save(@RequestBody File file) {
-        File newFile = fileService.save(file);
-        return new ResponseEntity<>(newFile, HttpStatus.CREATED);
-    }
+	@PostMapping
+	public ResponseEntity<File> save(@RequestBody File file) {
+		File newFile = fileService.save(file);
+		return new ResponseEntity<>(newFile, HttpStatus.CREATED);
+	}
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<File> delete(@PathVariable String id) {
-        fileService.delete(id);
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
+	@DeleteMapping("/{id}")
+	public ResponseEntity<File> delete(@PathVariable String id) {
+		fileService.delete(id);
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
 
-    @PostMapping("/list")
-    public ResponseEntity<List<File>> findByIds(@RequestBody List<String> ids) {
-        return ResponseEntity.ok(fileService.findByIds(ids));
-    }
+	@PostMapping("/list")
+	public ResponseEntity<List<File>> findByIds(@RequestBody List<String> ids) {
+		return ResponseEntity.ok(fileService.findByIds(ids));
+	}
 }

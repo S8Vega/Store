@@ -11,19 +11,19 @@ import lombok.NoArgsConstructor;
 @Builder
 public class File {
 
-    private String id;
-    private String base64;
-    private String fileName;
-    private String fileType;
+	private String id;
+	private String base64;
+	private String fileName;
+	private String fileType;
 
-    public static class Attributes {
-        public static final String ID = "id";
-        public static final String BASE64 = "base64";
-        public static final String FILE_NAME = "fileName";
-        public static final String FILE_TYPE = "fileType";
+	public static class Attributes {
+		public static final String ID = "id";
+		public static final String BASE64 = "base64";
+		public static final String FILE_NAME = "fileName";
+		public static final String FILE_TYPE = "fileType";
 
-        private Attributes() {
-            throw new IllegalStateException("Utility class");
-        }
-    }
+		private Attributes() {
+			throw new IllegalStateException("Utility class");
+		}
+	}
 }

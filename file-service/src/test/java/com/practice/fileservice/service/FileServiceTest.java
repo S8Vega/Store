@@ -11,63 +11,64 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class FileServiceTest {
 
-    @InjectMocks
-    private FileService fileService;
+	@InjectMocks
+	private FileService fileService;
 
-    @Mock
-    private FileRepositoryInterface fileRepository;
+	@Mock
+	private FileRepositoryInterface fileRepository;
 
-    @Test
-    void findById() throws ClassNotFoundException {
-        File fileExpected = FileTestDataBuilder.fileBuilder();
-        when(fileRepository.findById(fileExpected.getId())).thenReturn(fileExpected);
+	@Test
+	void findById() throws ClassNotFoundException {
+		File fileExpected = FileTestDataBuilder.fileBuilder();
+		when(fileRepository.findById(fileExpected.getId())).thenReturn(fileExpected);
 
-        File fileActual = fileService.findById(fileExpected.getId());
+		File fileActual = fileService.findById(fileExpected.getId());
 
-        assertEquals(fileExpected, fileActual);
-    }
+		assertEquals(fileExpected, fileActual);
+	}
 
-    @Test
-    void save() {
-        File fileExpected = FileTestDataBuilder.fileBuilder();
-        when(fileRepository.save(fileExpected)).thenReturn(fileExpected);
+	@Test
+	void save() {
+		File fileExpected = FileTestDataBuilder.fileBuilder();
+		when(fileRepository.save(fileExpected)).thenReturn(fileExpected);
 
-        File fileActual = fileService.save(fileExpected);
+		File fileActual = fileService.save(fileExpected);
 
-        assertEquals(fileExpected, fileActual);
-    }
+		assertEquals(fileExpected, fileActual);
+	}
 
-    @Test
-    void delete() {
-        File fileExpected = FileTestDataBuilder.fileBuilder();
+	@Test
+	void delete() {
+		File fileExpected = FileTestDataBuilder.fileBuilder();
 
-        assertDoesNotThrow(() -> fileService.delete(fileExpected.getId()));
-    }
+		assertDoesNotThrow(() -> fileService.delete(fileExpected.getId()));
+	}
 
-    @Test
-    void findByIds() throws ClassNotFoundException {
-        File fileExpected = FileTestDataBuilder.fileBuilder();
-        when(fileRepository.findById(anyString())).thenReturn(fileExpected);
+	@Test
+	void findByIds() throws ClassNotFoundException {
+		File fileExpected = FileTestDataBuilder.fileBuilder();
+		when(fileRepository.findById(anyString())).thenReturn(fileExpected);
 
-        List<File> filesActual = fileService.findByIds(List.of(fileExpected.getId(), fileExpected.getId()));
+		List<File> filesActual = fileService.findByIds(List.of(fileExpected.getId(), fileExpected.getId()));
 
-        assertEquals(List.of(fileExpected, fileExpected), filesActual);
-    }
+		assertEquals(List.of(fileExpected, fileExpected), filesActual);
+	}
 
-    @Test
-    void findByIds_error() throws ClassNotFoundException {
-        File fileExpected = FileTestDataBuilder.fileBuilder();
-        when(fileRepository.findById(anyString())).thenThrow(new ClassNotFoundException());
+	@Test
+	void findByIds_error() throws ClassNotFoundException {
+		File fileExpected = FileTestDataBuilder.fileBuilder();
+		when(fileRepository.findById(anyString())).thenThrow(new ClassNotFoundException());
 
-        List<File> filesActual = fileService.findByIds(List.of(fileExpected.getId(), fileExpected.getId()));
+		List<File> filesActual = fileService.findByIds(List.of(fileExpected.getId(), fileExpected.getId()));
 
-        assertEquals(List.of(), filesActual);
-    }
+		assertEquals(List.of(), filesActual);
+	}
 }

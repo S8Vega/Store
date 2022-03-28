@@ -1,5 +1,6 @@
 package com.practice.fileservice.model;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,9 +12,13 @@ import lombok.NoArgsConstructor;
 @Builder
 public class File {
 
+	@Schema(description = "ID del archivo", example = "1", required = false)
 	private String id;
+	@Schema(description = "Archivo en base64", example = "sakdljfhlaskdjbvailsudhf", required = true)
 	private String base64;
+	@Schema(description = "Nombre del archivo", example = "archivo.txt", required = true)
 	private String fileName;
+	@Schema(description = "Tipo de archivo", example = "txt", required = true)
 	private String fileType;
 
 	public static class Attributes {

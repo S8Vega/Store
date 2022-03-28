@@ -26,7 +26,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     // persistence
-    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb:2.6.4'
+    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb:2.6.5'
     // test
     implementation 'com.github.javafaker:javafaker:1.0.2'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
@@ -40,8 +40,7 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
     // swagger
-    implementation 'io.springfox:springfox-swagger2:3.0.0'
-    implementation 'io.springfox:springfox-swagger-ui:3.0.0'
+    implementation 'org.springdoc:springdoc-openapi-ui:1.6.6'
 }
 
 dependencyManagement {

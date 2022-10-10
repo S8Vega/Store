@@ -14,23 +14,23 @@ import org.springframework.data.mongodb.core.mapping.Field;
 @Builder
 @Document(collection = "file")
 public class FileEntity {
-	@Id
-	private String id;
-	@Field
-	private String base64;
-	@Field
-	private String fileName;
-	@Field
-	private String fileType;
+    @Id
+    private String id;
+    @Field
+    private String base64;
+    @Field
+    private String fileName;
+    @Field
+    private String fileType;
 
-	public static class Attributes {
-		public static final String ID = "id";
-		public static final String BASE64 = "base64";
-		public static final String FILE_NAME = "fileName";
-		public static final String FILE_TYPE = "fileType";
+    public static class Attributes {
+        public static final String ID = "id";
+        public static final String BASE64 = "base64";
+        public static final String FILE_NAME = "fileName";
+        public static final String FILE_TYPE = "fileType";
 
-		private Attributes() {
-			throw new IllegalStateException("Utility class");
-		}
-	}
+        private Attributes() {
+            throw new IllegalStateException("Utility class");
+        }
+    }
 }

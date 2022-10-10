@@ -21,64 +21,64 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 class FileRepositoryImplTest {
 
-	@InjectMocks
-	private FileRepositoryImpl fileRepository;
+    @InjectMocks
+    private FileRepositoryImpl fileRepository;
 
-	@Mock
-	private FileDaoInterface fileDao;
+    @Mock
+    private FileDaoInterface fileDao;
 
-	@Mock
-	private FileMapper fileMapper;
+    @Mock
+    private FileMapper fileMapper;
 
-	@Test
-	void findById() throws ClassNotFoundException {
-		File fileExpected = FileTestDataBuilder.fileBuilder();
-		when(fileDao.findById(fileExpected.getId()))
-				.thenReturn(Optional.ofNullable(FileTestDataBuilder.fileEntityBuilder()));
-		when(fileMapper.entityToModel(FileTestDataBuilder.fileEntityBuilder()))
-				.thenCallRealMethod();
+    @Test
+    void findById() throws ClassNotFoundException {
+        File fileExpected = FileTestDataBuilder.fileBuilder();
+        when(fileDao.findById(fileExpected.getId()))
+                .thenReturn(Optional.ofNullable(FileTestDataBuilder.fileEntityBuilder()));
+        when(fileMapper.entityToModel(FileTestDataBuilder.fileEntityBuilder()))
+                .thenCallRealMethod();
 
-		File fileActual = fileRepository.findById(fileExpected.getId());
+        File fileActual = fileRepository.findById(fileExpected.getId());
 
-		assertEquals(fileExpected, fileActual);
-		verify(fileDao).findById(fileExpected.getId());
-		verify(fileMapper).entityToModel(FileTestDataBuilder.fileEntityBuilder());
-	}
+        assertEquals(fileExpected, fileActual);
+        verify(fileDao).findById(fileExpected.getId());
+        verify(fileMapper).entityToModel(FileTestDataBuilder.fileEntityBuilder());
+    }
 
-	@Test
-	void findByIdOnError() {
-		File fileExpected = FileTestDataBuilder.fileBuilder();
-		when(fileDao.findById(fileExpected.getId()))
-				.thenReturn(Optional.empty());
+    @Test
+    void findByIdOnError() {
+        File fileExpected = FileTestDataBuilder.fileBuilder();
+        when(fileDao.findById(fileExpected.getId()))
+                .thenReturn(Optional.empty());
 
-		ClassNotFoundException exception = assertThrows(ClassNotFoundException.class,
-				() -> fileRepository.findById(fileExpected.getId()));
+        ClassNotFoundException exception = assertThrows(ClassNotFoundException.class,
+                () -> fileRepository.findById(fileExpected.getId()));
 
-		assertEquals(ErrorUtils.nonExistentFile(fileExpected.getId()), exception.getMessage());
-		verify(fileDao).findById(fileExpected.getId());
-	}
+        assertEquals(ErrorUtils.nonExistentFile(fileExpected.getId()), exception.getMessage());
+        verify(fileDao).findById(fileExpected.getId());
+    }
 
-	@Test
-	void save() {
-		File fileExpected = FileTestDataBuilder.fileBuilder();
-		when(fileMapper.modelToEntity(fileExpected))
-				.thenCallRealMethod();
-		when(fileDao.save(FileTestDataBuilder.fileEntityBuilder()))
-				.thenReturn(FileTestDataBuilder.fileEntityBuilder());
-		when(fileMapper.entityToModel(FileTestDataBuilder.fileEntityBuilder()))
-				.thenReturn(fileExpected);
+    @Test
+    void save() {
+        File fileExpected = FileTestDataBuilder.fileBuilder();
+        when(fileMapper.modelToEntity(fileExpected))
+                .thenCallRealMethod();
+        when(fileDao.save(FileTestDataBuilder.fileEntityBuilder()))
+                .thenReturn(FileTestDataBuilder.fileEntityBuilder());
+        when(fileMapper.entityToModel(FileTestDataBuilder.fileEntityBuilder()))
+                .thenReturn(fileExpected);
 
-		File fileActual = fileRepository.save(fileExpected);
+        File fileActual = fileRepository.save(fileExpected);
 
-		assertEquals(fileExpected, fileActual);
-	}
+        assertEquals(fileExpected, fileActual);
+    }
 
-	@Test
-	void delete() {
-		File file = FileTestDataBuilder.fileBuilder();
+    @Test
+    void delete() {
+        File file = FileTestDataBuilder.fileBuilder();
 
-		fileRepository.delete(file.getId());
+        fileRepository.delete(file.getId());
 
-		verify(fileDao).deleteById(file.getId());
-	}
+        verify(fileDao).deleteById(file.getId());
+    }
 }

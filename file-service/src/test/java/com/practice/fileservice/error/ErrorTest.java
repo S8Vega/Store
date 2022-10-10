@@ -6,12 +6,12 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 
 class ErrorTest {
 
-	@Test
-	void constructor() {
-		Error error = new Error();
+    @Test
+    void constructor() {
+        Error error = new Error();
 
-		assertNull(error.getMensaje());
-		assertNull(error.getNombre());
-	}
+        assertNull(error.getMensaje());
+        assertNull(error.getNombre());
+    }
 
 }

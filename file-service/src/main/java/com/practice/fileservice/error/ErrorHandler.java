@@ -9,21 +9,21 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @RestControllerAdvice
 public class ErrorHandler extends ResponseEntityExceptionHandler {
 
-	@ExceptionHandler(IllegalArgumentException.class)
-	public final ResponseEntity<Error> illegalArgumentException(Exception exception) {
-		Error error = Error.builder()
-				.nombre(exception.getClass().getSimpleName())
-				.mensaje(exception.getMessage())
-				.build();
-		return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
-	}
+    @ExceptionHandler(IllegalArgumentException.class)
+    public final ResponseEntity<Error> illegalArgumentException(Exception exception) {
+        Error error = Error.builder()
+                .nombre(exception.getClass().getSimpleName())
+                .mensaje(exception.getMessage())
+                .build();
+        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+    }
 
-	@ExceptionHandler(ClassNotFoundException.class)
-	public final ResponseEntity<Error> notFoundException(Exception exception) {
-		Error error = Error.builder()
-				.nombre(exception.getClass().getSimpleName())
-				.mensaje(exception.getMessage())
-				.build();
-		return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
-	}
+    @ExceptionHandler(ClassNotFoundException.class)
+    public final ResponseEntity<Error> notFoundException(Exception exception) {
+        Error error = Error.builder()
+                .nombre(exception.getClass().getSimpleName())
+                .mensaje(exception.getMessage())
+                .build();
+        return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+    }
 }

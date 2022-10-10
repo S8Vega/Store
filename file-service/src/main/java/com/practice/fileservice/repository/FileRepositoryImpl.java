@@ -15,32 +15,32 @@ import java.util.Optional;
 @Repository
 public class FileRepositoryImpl implements FileRepositoryInterface {
 
-	@Autowired
-	private FileDaoInterface fileDao;
-	@Autowired
-	private FileMapper fileMapper;
+    @Autowired
+    private FileDaoInterface fileDao;
+    @Autowired
+    private FileMapper fileMapper;
 
-	@Override
-	public File findById(String id) throws ClassNotFoundException {
-		log.info("findById: " + id);
-		Optional<FileEntity> fileEntity = fileDao.findById(id);
-		if (fileEntity.isEmpty()) {
-			log.error("File not found");
-			throw new ClassNotFoundException(ErrorUtils.nonExistentFile(id));
-		}
-		return fileMapper.entityToModel(fileEntity.get());
-	}
+    @Override
+    public File findById(String id) throws ClassNotFoundException {
+        log.info("findById: " + id);
+        Optional<FileEntity> fileEntity = fileDao.findById(id);
+        if (fileEntity.isEmpty()) {
+            log.error("File not found");
+            throw new ClassNotFoundException(ErrorUtils.nonExistentFile(id));
+        }
+        return fileMapper.entityToModel(fileEntity.get());
+    }
 
-	@Override
-	public File save(File file) {
-		log.info("save: " + file);
-		FileEntity fileEntity = fileMapper.modelToEntity(file);
-		return fileMapper.entityToModel(fileDao.save(fileEntity));
-	}
+    @Override
+    public File save(File file) {
+        log.info("save: " + file);
+        FileEntity fileEntity = fileMapper.modelToEntity(file);
+        return fileMapper.entityToModel(fileDao.save(fileEntity));
+    }
 
-	@Override
-	public void delete(String id) {
-		log.info("delete: " + id);
-		fileDao.deleteById(id);
-	}
+    @Override
+    public void delete(String id) {
+        log.info("delete: " + id);
+        fileDao.deleteById(id);
+    }
 }

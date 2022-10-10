@@ -7,15 +7,15 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 
 class FileEntityTest {
 
-	@Test
-	void constructor() {
-		FileEntity fileEntity = new FileEntity();
+    @Test
+    void constructor() {
+        FileEntity fileEntity = new FileEntity();
 
-		assertNotNull(fileEntity);
-		assertNull(fileEntity.getId());
-		assertNull(fileEntity.getFileName());
-		assertNull(fileEntity.getFileType());
-		assertNull(fileEntity.getBase64());
-	}
+        assertNotNull(fileEntity);
+        assertNull(fileEntity.getId());
+        assertNull(fileEntity.getFileName());
+        assertNull(fileEntity.getFileType());
+        assertNull(fileEntity.getBase64());
+    }
 
 }

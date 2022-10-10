@@ -6,13 +6,13 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 
 class FileTest {
 
-	@Test
-	void constructor() {
-		File file = new File();
+    @Test
+    void constructor() {
+        File file = new File();
 
-		assertNull(file.getFileName());
-		assertNull(file.getFileType());
-		assertNull(file.getBase64());
-	}
+        assertNull(file.getFileName());
+        assertNull(file.getFileType());
+        assertNull(file.getBase64());
+    }
 
 }

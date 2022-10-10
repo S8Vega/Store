@@ -9,7 +9,15 @@ import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -27,10 +35,10 @@ public class ClienteControlador {
     public ResponseEntity<Cliente> obtenerPorIdentificacion(
             @PathVariable
             @ApiParam(value = "tipo de identificacion", required = true, example = "CEDULA")
-                    String tipo,
+            String tipo,
             @PathVariable
             @ApiParam(value = "numero de identificacion", required = true, example = "1")
-                    String numero
+            String numero
     ) throws Exception {
         Cliente cliente = clienteServicio.obtenerPorIdentificacion(tipo, numero);
         return new ResponseEntity<>(cliente, HttpStatus.OK);
@@ -45,7 +53,7 @@ public class ClienteControlador {
     public ResponseEntity<List<Cliente>> obtenerPorEdadMayorIgual(
             @PathVariable
             @ApiParam(value = "edad", required = true, example = "20")
-                    Integer edad
+            Integer edad
     ) throws Exception {
         List<Cliente> clientes = clienteServicio.obtenerPorEdadMayorIgual(edad);
         return new ResponseEntity<>(clientes, HttpStatus.OK);
@@ -68,7 +76,7 @@ public class ClienteControlador {
     public ResponseEntity<Cliente> guardar(
             @RequestBody
             @ApiParam(value = "cliente", required = true)
-                    Cliente cliente
+            Cliente cliente
     ) throws Exception {
         clienteServicio.guardar(cliente);
         return new ResponseEntity<>(HttpStatus.CREATED);
@@ -80,7 +88,7 @@ public class ClienteControlador {
     public ResponseEntity<Cliente> actualizar(
             @RequestBody
             @ApiParam(value = "cliente", required = true)
-                    Cliente cliente
+            Cliente cliente
     ) throws Exception {
         clienteServicio.actualizar(cliente);
         return new ResponseEntity<>(HttpStatus.OK);
@@ -92,10 +100,10 @@ public class ClienteControlador {
     public ResponseEntity<Cliente> eliminar(
             @PathVariable
             @ApiParam(value = "tipo de identificacion", required = true, example = "CEDULA")
-                    String tipo,
+            String tipo,
             @PathVariable
             @ApiParam(value = "numero de identificacion", required = true, example = "1")
-                    String numero
+            String numero
     ) throws Exception {
         clienteServicio.eliminar(tipo, numero);
         return new ResponseEntity<>(HttpStatus.OK);

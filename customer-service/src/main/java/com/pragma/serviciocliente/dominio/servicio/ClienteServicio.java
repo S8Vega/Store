@@ -81,8 +81,8 @@ public class ClienteServicio {
         );
         fotoRest.guardar(
                 Foto.builder()
-                        .clienteId(clienteEntidad.getId())
-                        .foto(cliente.getFoto())
+                        .id(clienteEntidad.getId())
+                        .base64(cliente.getFoto())
                         .build()
         );
     }
@@ -107,8 +107,8 @@ public class ClienteServicio {
         clienteRepositorio.guardar(clienteEntidad);
         fotoRest.guardar(
                 Foto.builder()
-                        .clienteId(clienteEntidad.getId())
-                        .foto(cliente.getFoto())
+                        .id(clienteEntidad.getId())
+                        .base64(cliente.getFoto())
                         .build()
         );
     }
@@ -136,11 +136,11 @@ public class ClienteServicio {
         if (fotoResponseEntity.getStatusCode().is2xxSuccessful()) {
             fotos = fotoResponseEntity.getBody()
                     .stream()
-                    .collect(Collectors.toMap(Foto::getClienteId, Foto::getFoto));
+                    .collect(Collectors.toMap(Foto::getId, Foto::getBase64));
         }
         Foto foto = Foto.builder().build();
         for (ClienteEntidad clienteEntidad : clientesEntidad) {
-            foto.setFoto(fotos.getOrDefault(clienteEntidad.getId(), StringUtils.NO_HAY_FOTO));
+            foto.setBase64(fotos.getOrDefault(clienteEntidad.getId(), StringUtils.NO_HAY_FOTO));
             clientes.add(clienteMapper.aCliente(clienteEntidad, foto));
         }
         return clientes;
@@ -157,7 +157,7 @@ public class ClienteServicio {
         if (fotoResponseEntity.getStatusCode().equals(HttpStatus.OK)) {
             foto = fotoResponseEntity.getBody();
         } else {
-            foto = Foto.builder().foto(StringUtils.NO_HAY_FOTO).build();
+            foto = Foto.builder().base64(StringUtils.NO_HAY_FOTO).build();
         }
         return clienteMapper.aCliente(clienteEntidad, foto);
     }

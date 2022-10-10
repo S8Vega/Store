@@ -36,14 +36,14 @@ public class DatosFakeUtils {
                 .numeroIdentificacion(clienteEntidad.getIdentificacionEntidad().getNumero())
                 .edad(clienteEntidad.getEdad())
                 .ciudadNacimiento(clienteEntidad.getCiudadDeNacimiento().getNombre())
-                .foto(foto.getFoto())
+                .foto(foto.getBase64())
                 .build();
     }
 
     public static Foto getFoto(long clienteId) {
         return Foto.builder()
-                .clienteId(clienteId)
-                .foto(faker.app().name())
+                .id(clienteId)
+                .base64(faker.app().name())
                 .build();
     }
 

@@ -23,3 +23,7 @@ spring:
           uri: lb://file-service
           predicates:
             - Path=/file-service/**
+        - id: customer-service
+          uri: lb://customer-service
+          predicates:
+            - Path=/customer-service/**

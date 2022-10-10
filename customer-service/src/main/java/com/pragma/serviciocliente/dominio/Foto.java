@@ -10,11 +10,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class Foto {
-    Long clienteId;
-    String foto;
+    Long id;
+    String base64;
+    String fileName;
+    String fileType;
 
     public interface Atributos {
-        String CLIENTE_ID = "clienteId";
-        String FOTO = "foto";
+        String CLIENTE_ID = "id";
+        String FOTO = "base64";
     }
 }

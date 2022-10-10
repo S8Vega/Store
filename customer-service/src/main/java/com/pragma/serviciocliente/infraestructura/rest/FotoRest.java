@@ -7,17 +7,17 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@FeignClient(name = "servicio-foto")
+@FeignClient(name = "file-service")
 public interface FotoRest {
-    @GetMapping("/foto/{clienteId}")
+    @GetMapping("/file-service/file/{clienteId}")
     ResponseEntity<Foto> obtenerPorClienteId(@PathVariable Long clienteId) throws Exception;
 
-    @PostMapping("/foto")
+    @PostMapping("/file-service/file")
     ResponseEntity<Foto> guardar(@RequestBody Foto foto);
 
-    @DeleteMapping("/foto/{clienteId}")
+    @DeleteMapping("/file-service/file/{clienteId}")
     ResponseEntity<Foto> eliminar(@PathVariable Long clienteId);
 
-    @PostMapping("/foto/clientes")
+    @PostMapping("/file-service/file/list")
     ResponseEntity<List<Foto>> obtenerPorClienteIds(@RequestBody List<Long> clienteId);
 }
